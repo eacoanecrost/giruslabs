@@ -5,21 +5,27 @@ entries:
     - name: linux-essentials
       version: "1.0.0"
       description: "Fase 1: Comandos básicos, permissões e manipulação de arquivos."
-      keywords: ["linux", "bootcamp", "fase1"]
-      maintainers: ["Voce"]
+      keywords:
+        - linux
+        - bootcamp
+      maintainers:
+        - name: Voce
       url: "https://raw.githubusercontent.com/eacoanecrost/giruslabs/main/labs/01-linux-essentials/lab.yaml"
-      created: "2024-03-20T12:00:00Z"
 
   bash-scripting:
     - name: bash-scripting
       version: "1.0.0"
       description: "Fase 1: Automação básica com Shell Script."
-      keywords: ["bash", "script", "automacao"]
+      keywords:
+        - bash
+        - automacao
       url: "https://raw.githubusercontent.com/eacoanecrost/giruslabs/main/labs/02-bash-scripting/lab.yaml"
 
   docker-intro:
     - name: docker-intro
       version: "1.0.0"
       description: "Fase 2: Primeiros passos com Containers."
-      keywords: ["docker", "container"]
+      keywords:
+        - docker
+        - container
       url: "https://raw.githubusercontent.com/eacoanecrost/giruslabs/main/labs/04-docker-intro/lab.yaml"
