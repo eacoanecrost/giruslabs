@@ -28,4 +28,4 @@ entries:
       keywords:
         - docker
         - container
-      url: "https://raw.githubusercontent.com/eacoanecrost/giruslabs/main/labs/04-docker-intro/lab.yaml"
+      url: "https://raw.githubusercontent.com/eacoanecrost/giruslabs/main/labs/03-docker-intro/lab.yaml"
