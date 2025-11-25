@@ -1,0 +1,31 @@
+apiVersion: girus.linuxtips.io/v1
+kind: Lab
+metadata:
+  name: linux-essentials
+  version: "1.0.0"
+  description: "Dominando a linha de comando Linux"
+spec:
+  environment:
+    image: ubuntu:22.04
+    shell: /bin/bash
+
+  tasks:
+    - title: "Exploração de Diretórios"
+      description: "Vá para o diretório /tmp e crie uma pasta chamada 'bootcamp'."
+      command: "cd /tmp && mkdir bootcamp"
+      validation: "test -d /tmp/bootcamp"
+
+    - title: "Manipulação de Arquivos"
+      description: "Dentro de /tmp/bootcamp, crie um arquivo chamado 'notas.txt' contendo o texto 'Linux Rocks'."
+      hint: "Use o comando echo 'texto' > arquivo"
+      validation: "grep 'Linux Rocks' /tmp/bootcamp/notas.txt"
+
+    - title: "Permissões de Segurança"
+      description: "O arquivo 'notas.txt' está inseguro. Altere as permissões para que apenas o dono possa ler e escrever (600)."
+      command: "chmod 600 /tmp/bootcamp/notas.txt"
+      validation: "stat -c %a /tmp/bootcamp/notas.txt | grep 600"
+
+    - title: "Processos e Logs"
+      description: "Liste os processos rodando atualmente e salve a saída em '/tmp/bootcamp/processos.log'."
+      hint: "Use o comando ps aux e redirecione a saída."
+      validation: "test -f /tmp/bootcamp/processos.log && grep root /tmp/bootcamp/processos.log"

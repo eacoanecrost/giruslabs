@@ -1,0 +1,33 @@
+apiVersion: girus.linuxtips.io/v1
+kind: Lab
+metadata:
+  name: bash-scripting
+  version: "1.0.0"
+  description: "Automação com Bash Scripts"
+spec:
+  environment:
+    image: ubuntu:22.04
+
+  tasks:
+    - title: "Criar o Script de Backup"
+      description: "Crie um arquivo chamado 'backup.sh' no diretório home (/root)."
+      command: "touch /root/backup.sh"
+      validation: "test -f /root/backup.sh"
+
+    - title: "Permissão de Execução"
+      description: "Torne o script 'backup.sh' executável."
+      command: "chmod +x /root/backup.sh"
+      validation: "test -x /root/backup.sh"
+
+    - title: "Lógica do Script"
+      description: |
+        Edite o script para que ele crie um arquivo .tar.gz da pasta /etc.
+        O comando dentro do script deve ser algo como: tar -czf /root/backup_etc.tar.gz /etc/fstab
+        (Vamos fazer backup apenas do fstab para ser rápido).
+      hint: "Use 'nano' ou 'vi' para editar, ou echo."
+      validation: "grep 'tar -czf' /root/backup.sh"
+
+    - title: "Executar Automação"
+      description: "Execute o script e verifique se o arquivo de backup foi criado."
+      command: "./root/backup.sh"
+      validation: "test -f /root/backup_etc.tar.gz"

@@ -1,0 +1,27 @@
+apiVersion: girus.linuxtips.io/v1
+kind: Lab
+metadata:
+  name: docker-intro
+  version: "1.0.0"
+  description: "Primeiros passos com Docker"
+spec:
+  environment:
+    # Usamos uma imagem que tenha o cliente docker.
+    # O aluno precisará montar o socket ao rodar o girus (girus lab run ... -v /var/run/docker.sock:/var/run/docker.sock)
+    image: docker:dind
+
+  tasks:
+    - title: "Hello World"
+      description: "Verifique se o docker está rodando listando a versão."
+      command: "docker --version"
+      validation: "docker --version"
+
+    - title: "Rodar Nginx"
+      description: "Suba um container Nginx em background chamado 'meu-site' na porta 8080:80."
+      hint: "docker run -d --name meu-site -p 8080:80 nginx"
+      validation: "docker ps --format '{{.Names}}' | grep meu-site"
+
+    - title: "Executar comandos no Container"
+      description: "Crie um arquivo index.html customizado dentro do container rodando."
+      hint: 'docker exec meu-site sh -c "echo ''Ola Bootcamp'' > /usr/share/nginx/html/index.html"'
+      validation: "curl -s localhost:8080 | grep 'Ola Bootcamp'"
